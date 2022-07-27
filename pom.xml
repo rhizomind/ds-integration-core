@@ -11,8 +11,9 @@
         <module>core</module>
         <module>resteasy</module>
         <module>jersey</module>
-        <module>jira-server</module>
+        <module>jira</module>
         <module>bitbucket-server</module>
+        <module>sonar</module>
     </modules>
 
 

@@ -12,8 +12,8 @@ class BitbucketServerTest {
     @Test
     void name() {
         BitbucketServer bitbucketServer = new BitbucketServer(
-                null,
-                null,
+                "https://bitbucket.solidify.pl/",
+                "NTkxMzY1NDQwNDgxOma8fSZbo6/JsuWn/lKR3jeJD3bv",
                 new RestEasyClientFactoryBuilder()
         );
         ApplicationPropertiesResource applicationPropertiesResource = bitbucketServer.systemResource();
