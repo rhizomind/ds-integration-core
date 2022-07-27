@@ -13,6 +13,7 @@
         <module>jersey</module>
         <module>jira-server</module>
         <module>bitbucket-server</module>
+        <module>sonar-v9</module>
     </modules>
 
 

@@ -13,6 +13,7 @@ import com.rhizomind.ds.integrations.jira.server.issue.IssuesResource;
 import com.rhizomind.ds.integrations.jira.server.issuetype.IssueTypesResource;
 import com.rhizomind.ds.integrations.jira.server.project.ProjectsResource;
 import com.rhizomind.ds.integrations.jira.server.projectcategory.ProjectCategoriesResource;
+import com.rhizomind.ds.integrations.jira.server.resolution.ResolutionsResource;
 import com.rhizomind.ds.integrations.jira.server.serverinfo.ServerInfoResource;
 import com.rhizomind.ds.integrations.jira.server.status.StatusCategoriesResource;
 import com.rhizomind.ds.integrations.jira.server.status.StatusesResource;
@@ -82,9 +83,11 @@ public class JiraServer {
     public StatusCategoriesResource statusesCategoriesResource(){
         return this.clientFactory.create(StatusCategoriesResource.class);
     }
-
     public ProjectCategoriesResource projectCategoriesResource() {
         return this.clientFactory.create(ProjectCategoriesResource.class);
+    }
+    public ResolutionsResource resolutionsResource() {
+        return this.clientFactory.create(ResolutionsResource.class);
     }
 
     @Provider
