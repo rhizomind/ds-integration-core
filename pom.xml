@@ -12,8 +12,10 @@
         <module>resteasy</module>
         <module>jersey</module>
         <module>jira</module>
-        <module>bitbucket-server</module>
+        <module>bitbucket</module>
         <module>sonar</module>
+        <module>owasp</module>
+        <module>jenkins</module>
     </modules>
 
 
