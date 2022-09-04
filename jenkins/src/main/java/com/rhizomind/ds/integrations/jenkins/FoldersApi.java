@@ -17,7 +17,7 @@ public interface FoldersApi {
 
     /**
      *
-     * @param path eg: job/{foldername}/job/foldername
+     * @param path eg: 'job/{foldername}/job/foldername'
      * @param form
      * @return
      */

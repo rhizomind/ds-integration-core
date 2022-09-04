@@ -9,6 +9,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
+import com.rhizomind.ds.integrations.jenkins.configfiles.ConfigFilesApi;
+import com.rhizomind.ds.integrations.jenkins.credentials.CredentialsApi;
 import com.rhizomind.ds.integrations.jenkins.system.SystemApi;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
@@ -51,6 +53,14 @@ public class Jenkins {
 
     public FoldersApi folders(){
         return this.clientFactory.create(FoldersApi.class);
+    }
+
+    public ConfigFilesApi configFiles(){
+        return this.clientFactory.create(ConfigFilesApi.class);
+    }
+
+    public CredentialsApi credentials(){
+        return this.clientFactory.create(CredentialsApi.class);
     }
 
 }
