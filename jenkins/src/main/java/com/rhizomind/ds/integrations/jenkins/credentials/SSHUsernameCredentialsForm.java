@@ -6,13 +6,14 @@ import lombok.Value;
 
 @Value
 @AllArgsConstructor
-public class UsernamePasswordCredentialsForm {
+public class SSHUsernameCredentialsForm {
+
     private final String id;
     private final String username;
-    private final String password;
     private final boolean usernameSecret;
     private final String description;
+    private final SSHPrivateKeySourceForm privateKeySource;
     @JsonProperty("stapler-class")
-    private final String staplerClass = "com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl";
+    private final String staplerClass = "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey";
 
 }
