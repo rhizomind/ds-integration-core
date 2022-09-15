@@ -9,6 +9,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
+import com.rhizomind.ds.integrations.nexus.blobstore.BlobStoresResource;
+import com.rhizomind.ds.integrations.nexus.repository.RepositoriesResource;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
 import javax.ws.rs.Consumes;
@@ -19,10 +21,9 @@ import java.net.URL;
 
 public class Nexus {
 
-
     private final ClientFactory clientFactory;
 
-    public Nexus(URL  serverUrl, String username, String password, ClientFactoryBuilder clientFactoryBuilder) {
+    public Nexus(URL  serverUrl, String username, String token, ClientFactoryBuilder clientFactoryBuilder) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .disable(
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
@@ -42,10 +43,18 @@ public class Nexus {
 
 
         this.clientFactory = clientFactoryBuilder.build(
-                serverUrl.toString()+"rest/api/2/",
+                serverUrl.toString()+"service/rest",
                 new JacksonJsonProvider(objectMapper),
-                new BasicAuthentication(username, password)
+                new BasicAuthentication(username, token)
         );
+    }
+
+    public RepositoriesResource repositoriesResource() {
+        return this.clientFactory.create(RepositoriesResource.class);
+    }
+
+    public BlobStoresResource blobStoresResource() {
+        return this.clientFactory.create(BlobStoresResource.class);
     }
 
     @Provider
