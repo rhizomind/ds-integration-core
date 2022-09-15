@@ -16,6 +16,7 @@
         <module>sonar</module>
         <module>owasp</module>
         <module>maven</module>
+        <module>nexus</module>
         <module>jenkins</module>
     </modules>
 
