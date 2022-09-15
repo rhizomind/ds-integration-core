@@ -15,6 +15,7 @@
         <module>bitbucket</module>
         <module>sonar</module>
         <module>owasp</module>
+        <module>maven</module>
         <module>jenkins</module>
     </modules>
 
