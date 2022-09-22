@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: a-accu-tools
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: a-accu-ci
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: docker-registry-credentials
+  namespace: a-accu-ci
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: eyJhdXRocyI6ewoiZG9ja2VyLXJlbGVhc2VzLmFjY3VyYXR1cy5zb2xpZGlmeS5wbCI6eyJ1c2VybmFtZSI6InN2Y2s4c2FjY3UiLCJwYXNzd29yZCI6InN2Y2s4c2FjY3UiLCJhdXRoIjoiYzNaamEzVmlaWEp1WlhSbGN6cHpkbU5yZFdKbGNtNWxkR1Z6In0sCiJkb2NrZXItcmVsZWFzZXMuaW50ZXJuYWwuc29saWRpZnkucGwiOnsidXNlcm5hbWUiOiJzdmNrOHMiLCJwYXNzd29yZCI6InN2Y2s4cyIsImF1dGgiOiJjM1pqYXpoek9uTjJZMnM0Y3c9PSJ9Cn19

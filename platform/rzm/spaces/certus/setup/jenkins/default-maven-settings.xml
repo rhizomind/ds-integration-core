@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="https://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <localRepository>/deploy-sphere/build-cache/m2/repository</localRepository>
+    <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+        <pluginGroup>com.solidify</pluginGroup>
+        <pluginGroup>org.jacoco</pluginGroup>
+    </pluginGroups>
+    <servers>
+        <server>
+            <id>solidify-maven-central-proxy</id>
+            <username>${env.JENKINS_USER_LOGIN}</username>
+            <password>${env.JENKINS_USER_PASSWORD}</password>
+        </server>
+        <server>
+            <id>solidify-maven-releases</id>
+            <username>${env.JENKINS_USER_LOGIN}</username>
+            <password>${env.JENKINS_USER_PASSWORD}</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>solidify-maven-central-proxy</id>
+            <url>${env.MAVEN_CENTRAL_PROXY}</url>
+            <mirrorOf>central</mirrorOf>
+            <name>SOLIDIFY Maven Repository</name>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>solidify</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <judge-d.judgeDLocation>${env.JUDGE_D_HOST_URL}</judge-d.judgeDLocation>
+            </properties>
+        </profile>
+    </profiles>
+</settings>

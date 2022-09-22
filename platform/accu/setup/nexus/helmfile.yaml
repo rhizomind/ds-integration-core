@@ -1,0 +1,9 @@
+---
+bases:
+  - ../account.yaml
+
+releases:
+  - name: "a-accu-postgresql"
+    <<: *default
+    chart: bitnami/postgresql
+    version: 11.8.1

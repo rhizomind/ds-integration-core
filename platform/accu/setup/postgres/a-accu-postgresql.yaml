@@ -1,0 +1,17 @@
+metrics:
+  enabled: true
+
+auth:
+  database: postgres
+  postgresPassword: caGMly9Hhj
+
+primary:
+  persistence:
+    storageClass: ssd
+    size: 10Gi
+  initdb:
+    scripts:
+      sonar.sql: |
+        CREATE USER "sonar" WITH PASSWORD 'sonar';
+        CREATE DATABASE "sonar" OWNER = "sonar";
+
