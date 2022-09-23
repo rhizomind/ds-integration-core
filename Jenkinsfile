@@ -5,6 +5,11 @@ genericBuildPipeline {
 
     useTemplate('rzm-lib-mvnw') {
         properties {
+            validate = [
+                checkstyle: [
+                    enabled: true
+                ]
+            ]
         }
     }
 
