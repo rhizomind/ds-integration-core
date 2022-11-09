@@ -11,6 +11,7 @@ import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
 import com.rhizomind.ds.integrations.nexus.blobstore.BlobStoresResource;
 import com.rhizomind.ds.integrations.nexus.repository.RepositoriesResource;
+import com.rhizomind.ds.integrations.nexus.roles.RolesResource;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
 import javax.ws.rs.Consumes;
@@ -51,6 +52,10 @@ public class Nexus {
 
     public RepositoriesResource repositoriesResource() {
         return this.clientFactory.create(RepositoriesResource.class);
+    }
+
+    public RolesResource rolesResource() {
+        return this.clientFactory.create(RolesResource.class);
     }
 
     public BlobStoresResource blobStoresResource() {
