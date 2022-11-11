@@ -1,4 +1,4 @@
-package com.rhizomind.ds.integrations.bitbucket.server;
+package com.rhizomind.ds.integrations.bitbucket.cloud;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -9,16 +9,15 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
-import com.rhizomind.ds.integrations.bitbucket.server.projects.ProjectsResource;
-import com.rhizomind.ds.integrations.bitbucket.server.serverinfo.ApplicationPropertiesResource;
-import com.rhizomind.ds.integrations.bitbucket.server.users.UsersResource;
-import com.rhizomind.ds.integrations.resteasy.BearerTokenRequestFilter;
+import com.rhizomind.ds.integrations.bitbucket.cloud.repositories.RepositoriesResource;
+import com.rhizomind.ds.integrations.bitbucket.cloud.workspace.WorkspacesResource;
+import com.rhizomind.ds.integrations.resteasy.BasicAuthRequestFilter;
 
-public class BitbucketServer {
+public class BitbucketCloud {
 
     private final ClientFactory clientFactory;
 
-    public BitbucketServer(String serverUrl, String token, ClientFactoryBuilder clientFactoryBuilder) {
+    public BitbucketCloud(String username, String appPassword, ClientFactoryBuilder clientFactoryBuilder) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .disable(
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
@@ -38,22 +37,19 @@ public class BitbucketServer {
 
 
         this.clientFactory = clientFactoryBuilder.build(
-                serverUrl,
+                "https://bitbucket.org/",
                 new JacksonJsonProvider(objectMapper),
-                new BearerTokenRequestFilter(token)
+                new BasicAuthRequestFilter(username, appPassword)
         );
+
     }
 
-    public ApplicationPropertiesResource systemResource() {
-        return this.clientFactory.create(ApplicationPropertiesResource.class);
+    public WorkspacesResource workspacesResource(){
+        return this.clientFactory.create(WorkspacesResource.class);
     }
 
-    public ProjectsResource projectsResource() {
-        return this.clientFactory.create(ProjectsResource.class);
-    }
-
-    public UsersResource usersResource() {
-        return this.clientFactory.create(UsersResource.class);
+    public RepositoriesResource repositoriesResource(){
+        return this.clientFactory.create(RepositoriesResource.class);
     }
 
 }
