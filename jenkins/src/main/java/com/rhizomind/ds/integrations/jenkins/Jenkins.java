@@ -11,6 +11,7 @@ import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
 import com.rhizomind.ds.integrations.jenkins.configfiles.ConfigFilesApi;
 import com.rhizomind.ds.integrations.jenkins.credentials.CredentialsApi;
+import com.rhizomind.ds.integrations.jenkins.jobs.JobsApi;
 import com.rhizomind.ds.integrations.jenkins.system.SystemApi;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
@@ -63,4 +64,7 @@ public class Jenkins {
         return this.clientFactory.create(CredentialsApi.class);
     }
 
+    public JobsApi jobs() {
+        return this.clientFactory.create(JobsApi.class);
+    }
 }

@@ -26,4 +26,9 @@ public interface FoldersApi {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Response createSubFolder(@PathParam("path") String path, MultivaluedMap<String, String> form);
 
+    @POST
+    @Path("{path}/configSubmit")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    Response submitConfig(@PathParam("path") String path, MultivaluedMap<String, String> form);
+
 }
