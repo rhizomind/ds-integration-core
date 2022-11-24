@@ -23,6 +23,9 @@
 
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
         <jackson.version>2.13.3</jackson.version>
         <lombok.version>1.18.24</lombok.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
