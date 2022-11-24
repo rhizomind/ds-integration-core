@@ -13,9 +13,6 @@
     <artifactId>jira-client</artifactId>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <jackson.version>2.13.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -43,7 +40,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
         </dependency>
 
         <dependency>
@@ -54,7 +50,6 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

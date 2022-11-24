@@ -13,7 +13,6 @@
     <artifactId>owasp</artifactId>
 
     <properties>
-        <jackson.version>2.13.3</jackson.version>
     </properties>
 
     <dependencies>

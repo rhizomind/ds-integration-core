@@ -13,7 +13,6 @@
     <artifactId>maven-settings</artifactId>
 
     <properties>
-        <jackson.version>2.13.3</jackson.version>
     </properties>
 
     <dependencies>

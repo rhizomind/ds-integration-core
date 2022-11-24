@@ -10,33 +10,26 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ds-integrations-resteasy</artifactId>
+    <groupId>com.rhizomind.ds.integrations</groupId>
+    <artifactId>license-scan</artifactId>
+    <version>0.1-SNAPSHOT</version>
 
-    <properties>
-        <resteasy.version>5.0.3.Final</resteasy.version>
-
-    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.rhizomind.ds.integrations</groupId>
-            <artifactId>ds-integrations-core</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-client</artifactId>
-            <version>${resteasy.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
-
     </dependencies>
-
 
 </project>
