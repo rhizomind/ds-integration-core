@@ -21,4 +21,8 @@ public class RawHostedRepositoryForm  extends AbstractRepositoryForm {
     @Builder.Default
     private RepositoryRawForm raw = RepositoryRawForm.builder().build();
 
+    @Override
+    public String getType() {
+        return "raw";
+    }
 }

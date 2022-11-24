@@ -20,4 +20,8 @@ public class MavenHostedRepositoryForm extends AbstractRepositoryForm {
     @Builder.Default
     private RepositoryMavenForm maven = RepositoryMavenForm.builder().build();
 
+    @Override
+    public String getType() {
+        return "maven2";
+    }
 }

@@ -19,6 +19,9 @@
         <module>maven</module>
         <module>nexus</module>
         <module>jenkins</module>
+        <module>rhizomind-ci</module>
+        <module>docker</module>
+        <module>keycloak</module>
     </modules>
 
 

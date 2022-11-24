@@ -8,11 +8,12 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-public class AbstractRepositoryForm {
+public abstract class AbstractRepositoryForm {
 
     private String name;
     @Builder.Default
     private boolean online = true;
 
+    public abstract String getType();
 
 }

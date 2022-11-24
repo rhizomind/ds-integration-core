@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 
+import java.util.List;
+
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
@@ -23,6 +25,6 @@ public class ItemInfoDto {
     private String fullName;
     private String name;
     private String url;
-
+    private List<ItemInfoDto> jobs;
 
 }

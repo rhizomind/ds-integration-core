@@ -16,4 +16,8 @@ public class MavenGroupRepositoryForm extends AbstractRepositoryForm {
     @Builder.Default
     private RepositoryGroupForm group = RepositoryGroupForm.builder().build();
 
+    @Override
+    public String getType() {
+        return "maven2";
+    }
 }

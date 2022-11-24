@@ -1,4 +1,4 @@
-package com.rhizomind.ds.integrations.sonar;
+package com.rhizomind.ds.integrations.nexus;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -9,20 +9,15 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
-import com.rhizomind.ds.integrations.sonar.component.ComponentsResource;
-import com.rhizomind.ds.integrations.sonar.measures.MeasuresResource;
-import com.rhizomind.ds.integrations.sonar.metric.MetricsResource;
-import com.rhizomind.ds.integrations.sonar.projectanalysis.ProjectAnalysesResource;
-import com.rhizomind.ds.integrations.sonar.system.SystemResource;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
 import java.net.URL;
 
-public class SonarServer {
+public class Keycloak implements AutoCloseable {
 
     private final ClientFactory clientFactory;
 
-    public SonarServer(URL serverUrl, String username, String password, ClientFactoryBuilder clientFactoryBuilder) {
+    public Keycloak(URL serverUrl, String clientId, String clientSecret, ClientFactoryBuilder clientFactoryBuilder) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .disable(
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
@@ -44,27 +39,12 @@ public class SonarServer {
         this.clientFactory = clientFactoryBuilder.build(
                 serverUrl.toString(),
                 new JacksonJsonProvider(objectMapper),
-                new BasicAuthentication(username, password)
+                new BasicAuthentication(clientId, clientSecret)
         );
     }
-    public SonarServer(URL serverUrl, String token, ClientFactoryBuilder clientFactoryBuilder) {
-        this(serverUrl, token, "", clientFactoryBuilder);
-    }
 
-    public ComponentsResource components(){
-        return this.clientFactory.create(ComponentsResource.class);
-    }
-    public MeasuresResource measures(){
-        return this.clientFactory.create(MeasuresResource.class);
-    }
-    public MetricsResource metricsResource(){
-        return this.clientFactory.create(MetricsResource.class);
-    }
-    public ProjectAnalysesResource projectAnalyses(){
-        return this.clientFactory.create(ProjectAnalysesResource.class);
-    }
-    public SystemResource system(){
-        return this.clientFactory.create(SystemResource.class);
-    }
+    @Override
+    public void close() throws Exception {
 
+    }
 }

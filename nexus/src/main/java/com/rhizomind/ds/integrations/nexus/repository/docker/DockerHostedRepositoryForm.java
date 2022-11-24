@@ -21,4 +21,8 @@ public class DockerHostedRepositoryForm extends AbstractRepositoryForm {
     @Builder.Default
     private RepositoryDockerForm docker = RepositoryDockerForm.builder().build();
 
+    @Override
+    public String getType() {
+        return "docker";
+    }
 }

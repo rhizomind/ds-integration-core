@@ -12,12 +12,14 @@ import com.rhizomind.ds.integrations.ClientFactoryBuilder;
 import com.rhizomind.ds.integrations.nexus.blobstore.BlobStoresResource;
 import com.rhizomind.ds.integrations.nexus.repository.RepositoriesResource;
 import com.rhizomind.ds.integrations.nexus.roles.RolesResource;
+import com.rhizomind.ds.integrations.resteasy.RestEasyClientFactoryBuilder;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Nexus {
@@ -48,6 +50,14 @@ public class Nexus {
                 new JacksonJsonProvider(objectMapper),
                 new BasicAuthentication(username, token)
         );
+    }
+
+    public static Nexus create(String url, String username, String password, ClientFactoryBuilder clientFactoryBuilder) {
+        try {
+            return new Nexus(new URL(url), username, password, clientFactoryBuilder);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public RepositoriesResource repositoriesResource() {

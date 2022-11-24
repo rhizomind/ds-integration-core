@@ -4,13 +4,16 @@ import com.rhizomind.ds.integrations.resteasy.RestEasyClientFactoryBuilder;
 import com.rhizomind.ds.integrations.sonar.metric.MetricSearchResultRepresentation;
 import org.junit.jupiter.api.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 class SonarServerTest {
 
     @Test
-    void name() {
+    void name() throws MalformedURLException {
         SonarServer sonarServer = new SonarServer(
-                "https://sonar.accu.account.solidify.pl/",
-                "squ_fe1f28937824782e98034e7139ea6e04ecd2784f",
+                new URL("https://sonar.accu.account.solidify.pl/"),
+                "xxx",
                 new RestEasyClientFactoryBuilder()
         );
 
