@@ -30,7 +30,7 @@
 
     <profiles>
         <profile>
-            <id>generate-maven-settings-classes</id>
+            <id>xsd-2-java</id>
             <build>
                 <plugins>
                     <plugin>

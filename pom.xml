@@ -33,6 +33,7 @@
         <lombok.version>1.18.24</lombok.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <jaxb.version>3.0.0</jaxb.version>
     </properties>
 
     <dependencyManagement>
@@ -57,10 +58,26 @@
                 <artifactId>javax.ws.rs-api</artifactId>
                 <version>${javax.ws.rs-api.version}</version>
             </dependency>
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
                 <version>${junit-jupiter.version}</version>
             </dependency>
         </dependencies>
@@ -71,7 +88,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>6.5.3</version>
+                <version>7.3.2</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.postgresql</groupId>

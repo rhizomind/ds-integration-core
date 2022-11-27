@@ -10,7 +10,7 @@
       <xs:element type="xs:string" name="comments" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="licensesType" mixed="true">
+  <xs:complexType name="licensesType">
     <xs:sequence>
       <xs:element type="licenseType" name="license" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>

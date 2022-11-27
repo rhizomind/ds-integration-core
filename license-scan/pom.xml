@@ -17,6 +17,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
@@ -31,5 +39,38 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>xsd-2-java</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jaxb2-maven-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>dependency-check-2.5.xsd-to-java</id>
+                                <goals>
+                                    <goal>xjc</goal>
+                                </goals>
+                                <phase>
+                                    generate-sources
+                                </phase>
+                                <configuration>
+                                    <packageName>com.rhizomind.ds.integrations.security.licensescan.maven</packageName>
+                                    <target>3.0</target>
+                                    <sources>
+                                        <source>./src/main/xsd/licenses.xsd</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

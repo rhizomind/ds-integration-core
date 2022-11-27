@@ -17,20 +17,33 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <profiles>
         <profile>
-            <id>generate-owasp-xml-classes</id>
+            <id>xsd-2-java</id>
             <build>
                 <plugins>
                     <plugin>
@@ -43,6 +56,9 @@
                                 <goals>
                                     <goal>xjc</goal>
                                 </goals>
+                                <phase>
+                                    generate-sources
+                                </phase>
                                 <configuration>
                                     <packageName>com.rhizomind.ds.integrations.owasp.v25</packageName>
                                     <target>3.0</target>
