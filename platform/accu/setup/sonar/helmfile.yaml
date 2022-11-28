@@ -1,9 +1,0 @@
----
-bases:
-  - ../base-account.yaml
-
-releases:
-  - name: "a-accu-sonarqube"
-    <<: *default
-    chart: sonarqube/sonarqube
-    version: 5.0.0+336
