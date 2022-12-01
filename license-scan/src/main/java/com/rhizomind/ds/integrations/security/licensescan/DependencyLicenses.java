@@ -12,6 +12,6 @@ import java.util.Set;
 public class DependencyLicenses {
 
     private ComponentId componentId;
-    private Set<License> licenses;
+    private Set<String> licenses;
 
 }
