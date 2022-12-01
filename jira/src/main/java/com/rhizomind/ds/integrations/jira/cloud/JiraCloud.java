@@ -22,12 +22,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 import java.net.URL;
+import java.util.Objects;
 
 public class JiraCloud {
 
     private final ClientFactory clientFactory;
 
     public JiraCloud(URL  apiUrl, String username, String token, ClientFactoryBuilder clientFactoryBuilder) {
+        Objects.requireNonNull(apiUrl, "apiUr ust not be null");
+        Objects.requireNonNull(username, "username ust not be null");
+        Objects.requireNonNull(token, "token  ust not be null");
+        Objects.requireNonNull(clientFactoryBuilder, "clientFactoryBuilder ust not be null");
         ObjectMapper objectMapper = new ObjectMapper()
                 .disable(
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,

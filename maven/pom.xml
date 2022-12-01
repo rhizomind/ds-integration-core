@@ -36,9 +36,11 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>jaxb2-maven-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <configuration>
+                            <target>3.0</target>
+                            <clearOutputDir>false</clearOutputDir>
+                        </configuration>
                         <executions>
-
                             <execution>
                                 <id>maven-settings-1.2.0.xsd-to-java</id>
                                 <goals>
@@ -46,10 +48,17 @@
                                 </goals>
                                 <configuration>
                                     <packageName>com.rhizomind.ds.integrations.maven.settings.v120</packageName>
-                                    <target>3.0</target>
-                                    <sources>
-                                        <source>./src/main/xsd/settings-1.2.0.xsd</source>
-                                    </sources>
+                                    <sources><source>./src/main/xsd/settings-1.2.0.xsd</source></sources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>maven-project-4.0.0.xsd-to-java</id>
+                                <goals>
+                                    <goal>xjc</goal>
+                                </goals>
+                                <configuration>
+                                    <packageName>com.rhizomind.ds.integrations.maven.project.v400</packageName>
+                                    <sources><source>./src/main/xsd/maven-4.0.0.xsd</source></sources>
                                 </configuration>
                             </execution>
                         </executions>
