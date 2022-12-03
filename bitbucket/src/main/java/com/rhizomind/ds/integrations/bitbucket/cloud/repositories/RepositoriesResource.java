@@ -4,7 +4,7 @@ import com.rhizomind.ds.integrations.bitbucket.cloud.PagedResult;
 
 import javax.ws.rs.*;
 
-@Path("/api/2.0/repositories")
+@Path("2.0/repositories")
 @Produces("application/json")
 @Consumes("application/json")
 public interface RepositoriesResource {
@@ -13,6 +13,6 @@ public interface RepositoriesResource {
     PagedResult<RepositoryRepresentation> getAll();
 
     @Path("{workspace}")
-    WorkspaceRepositoriesResource getWorkspaceRepositories(@PathParam("workspace") String workspace);
+    WorkspaceRepositoriesResource getWorkspaceRepositories(@PathParam("workspace") String workspace, @QueryParam("q") String q);
 
 }

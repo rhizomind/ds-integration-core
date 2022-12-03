@@ -4,15 +4,16 @@ import com.rhizomind.ds.integrations.bitbucket.cloud.PagedResult;
 
 import javax.ws.rs.*;
 
-@Path("/api/2.0/user/permissions/workspaces")
+@Path("2.0")
 @Produces("application/json")
 @Consumes("application/json")
 public interface WorkspacesResource {
 
     @GET
+    @Path("user/permissions/workspaces")
     PagedResult<WorkspaceMembershipRepresentation> getAll();
 
-    @Path("{workspace}")
+    @Path("workspaces/{workspace}")
     WorkspaceResource getOne(@PathParam("workspace") String workspace);
 
 }

@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rhizomind.ds.integrations.bitbucket.cloud.projects.ProjectRepresentation;
 import com.rhizomind.ds.integrations.bitbucket.cloud.workspace.WorkspaceRepresentation;
-import com.rhizomind.ds.integrations.bitbucket.server.LinkRepresentation;
 import lombok.Data;
 import lombok.ToString;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Data
@@ -59,7 +57,10 @@ public class RepositoryRepresentation {
     @JsonProperty("has_wiki")
     private boolean hasWiki;
 
-    private Map<String, List<LinkRepresentation>> links;
+    @JsonProperty("mainbranch")
+    private MainBranchRepresentation mainBranch;
+
+    private RepositoryLinksRepresentation links;
 
     @JsonAnySetter
     @JsonAnyGetter

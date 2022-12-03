@@ -13,6 +13,11 @@ import com.rhizomind.ds.integrations.bitbucket.cloud.repositories.RepositoriesRe
 import com.rhizomind.ds.integrations.bitbucket.cloud.workspace.WorkspacesResource;
 import com.rhizomind.ds.integrations.resteasy.BasicAuthRequestFilter;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ext.Provider;
+
 public class BitbucketCloud {
 
     private final ClientFactory clientFactory;
@@ -35,10 +40,9 @@ public class BitbucketCloud {
                         new JavaTimeModule()
                 );
 
-
         this.clientFactory = clientFactoryBuilder.build(
-                "https://bitbucket.org/",
-                new JacksonJsonProvider(objectMapper),
+                "https://api.bitbucket.org",
+                new MyProvider(objectMapper),
                 new BasicAuthRequestFilter(username, appPassword)
         );
 
@@ -52,4 +56,13 @@ public class BitbucketCloud {
         return this.clientFactory.create(RepositoriesResource.class);
     }
 
+
+    @Provider
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    class MyProvider extends JacksonJsonProvider {
+        MyProvider(ObjectMapper mapper) {
+            super(mapper);
+        }
+    }
 }
