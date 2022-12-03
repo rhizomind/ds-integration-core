@@ -1,4 +1,4 @@
-package com.rhizomind.ds.integrations.resteasy;
+package com.rhizomind.ds.integrations;
 
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;

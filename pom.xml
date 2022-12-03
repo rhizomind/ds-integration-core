@@ -15,6 +15,7 @@
         <module>license-scan</module>
         <module>jira</module>
         <module>bitbucket</module>
+        <module>gitlab</module>
         <module>sonar</module>
         <module>maven</module>
         <module>nexus</module>

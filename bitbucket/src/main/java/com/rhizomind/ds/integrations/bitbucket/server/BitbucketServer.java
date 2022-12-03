@@ -12,7 +12,7 @@ import com.rhizomind.ds.integrations.ClientFactoryBuilder;
 import com.rhizomind.ds.integrations.bitbucket.server.projects.ProjectsResource;
 import com.rhizomind.ds.integrations.bitbucket.server.serverinfo.ApplicationPropertiesResource;
 import com.rhizomind.ds.integrations.bitbucket.server.users.UsersResource;
-import com.rhizomind.ds.integrations.resteasy.BearerTokenRequestFilter;
+import com.rhizomind.ds.integrations.BearerTokenRequestFilter;
 
 public class BitbucketServer {
 

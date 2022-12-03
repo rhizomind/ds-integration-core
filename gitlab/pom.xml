@@ -10,7 +10,10 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bitbucket-client</artifactId>
+    <groupId>com.rhizomind.ds.integrations</groupId>
+    <artifactId>gitlab</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
 
     <dependencies>
         <dependency>

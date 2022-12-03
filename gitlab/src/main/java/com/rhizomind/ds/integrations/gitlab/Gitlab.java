@@ -1,4 +1,5 @@
-package com.rhizomind.ds.integrations.bitbucket.cloud;
+
+package com.rhizomind.ds.integrations.gitlab;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -7,22 +8,20 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.rhizomind.ds.integrations.BearerTokenRequestFilter;
 import com.rhizomind.ds.integrations.ClientFactory;
 import com.rhizomind.ds.integrations.ClientFactoryBuilder;
-import com.rhizomind.ds.integrations.bitbucket.cloud.repositories.RepositoriesResource;
-import com.rhizomind.ds.integrations.bitbucket.cloud.workspace.WorkspacesResource;
-import com.rhizomind.ds.integrations.BasicAuthRequestFilter;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 
-public class BitbucketCloud {
+public class Gitlab {
 
     private final ClientFactory clientFactory;
 
-    public BitbucketCloud(String username, String appPassword, ClientFactoryBuilder clientFactoryBuilder) {
+    public Gitlab(String token, ClientFactoryBuilder clientFactoryBuilder) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .disable(
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
@@ -41,21 +40,20 @@ public class BitbucketCloud {
                 );
 
         this.clientFactory = clientFactoryBuilder.build(
-                "https://api.bitbucket.org",
+                "https://gitlab.com/",
                 new MyProvider(objectMapper),
-                new BasicAuthRequestFilter(username, appPassword)
+                new BearerTokenRequestFilter(token)
         );
 
     }
 
-    public WorkspacesResource workspacesResource(){
-        return this.clientFactory.create(WorkspacesResource.class);
+    public UsersResource usersResource(){
+        return this.clientFactory.create(UsersResource.class);
     }
 
-    public RepositoriesResource repositoriesResource(){
-        return this.clientFactory.create(RepositoriesResource.class);
+    public GroupsResource groupsResource(){
+        return this.clientFactory.create(GroupsResource.class);
     }
-
 
     @Provider
     @Produces(MediaType.APPLICATION_JSON)
